@@ -1,0 +1,5 @@
+﻿  01 线性表.cpp
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓\01 线性表\01 线性表.cpp(13,1): warning C4005: “OVERFLOW”: 宏重定义
+D:\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(965): message : 参见“OVERFLOW”的前一个定义
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓\01 线性表\01 线性表.cpp(60,33): warning C4244: “=”: 从“double”转换到“ElemType”，可能丢失数据
+  01 线性表.vcxproj -> E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓\01 线性表\x64\Debug\01 线性表.exe
