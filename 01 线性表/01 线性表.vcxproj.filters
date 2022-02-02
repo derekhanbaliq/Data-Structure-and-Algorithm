@@ -18,5 +18,8 @@
     <ClCompile Include="01 顺序表.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="02 单链表.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

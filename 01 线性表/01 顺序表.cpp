@@ -6,11 +6,10 @@ using namespace std;
 //general define
 #define TRUE		1
 #define FALSE		0
-
-#define OK			1
-#define ERROR		0
-#define INFEASIBLE	-1
-#define OVERFLOW	-2
+#define OK				1
+#define ERROR			0
+#define INFEASIBLE		-1
+#define STACK_OVERFLOW	-2
 
 typedef int Status;
 typedef int ElemType;
@@ -70,7 +69,7 @@ Status InitList(SqList& L)
 
 	if (!L.elem) //L.elem == 0
 	{
-		exit(OVERFLOW); //内存不够 没有分配到地址 存储分配失败 里面存空值 溢出错误
+		exit(STACK_OVERFLOW); //内存不够 没有分配到地址 存储分配失败 里面存空值 溢出错误
 	}
 
 	L.length = 0; //空表长度为0
@@ -193,7 +192,8 @@ Status ListDelete(SqList& L, int i, ElemType &e)
 	return OK;
 }
 
-int main(void)
+//change the main name to make sure there is only one main in the project
+int main01(void)
 {
 	SqList list;
 	int box; //just a test space
