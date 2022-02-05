@@ -23,7 +23,7 @@ typedef struct Lnode
 //定义链表L：LinkList L;
 //定义节点指针p：Lnode *p = LinkList p 但常用后者表明链表 前者表明节点指针
 
-//填充链表L - 自定义函数
+//填充链表L - 自定义函数1
 void FillList(LinkList& L)
 {
 	Lnode* p;
@@ -34,15 +34,11 @@ void FillList(LinkList& L)
 	{
 		if (i == 0)
 		{
-			L->data = NULL; //头指针数据域为空
-		}
-		else if (i == 1)
-		{
 			L->data = 971105; //头结点数据域为info
 		}
 		else
 		{
-			L->data = i; //whatever
+			L->data = 100 - 10 * i; //whatever
 		}
 		
 		L->next = new Lnode;
@@ -55,7 +51,7 @@ void FillList(LinkList& L)
 	L = p;
 }
 
-//打印链表L - 自定义函数
+//打印链表L - 自定义函数2
 void PrintList(LinkList L) //不改变实参 所以不用引用
 {
 	while (L->next != NULL)
@@ -82,7 +78,7 @@ Status InitList(LinkList& L)
 	return OK;
 }
 
-//判断链表L是否为空
+//判断链表L是否为空 - 补充算法1
 Status IsEmpty(LinkList L)
 {
 	if (L->next)
@@ -95,7 +91,7 @@ Status IsEmpty(LinkList L)
 	}
 }
 
-//销毁单链表L
+//销毁单链表L - 补充算法2
 Status DestroyList(LinkList L)
 {
 	Lnode* p; //定义一个节点类型的指针变量
@@ -109,20 +105,143 @@ Status DestroyList(LinkList L)
 	return OK;
 }
 
+//清空单链表L - 补充算法3
+Status ClearList(LinkList& L)
+{
+	Lnode* p, * q; //构建两个节点类型的指针变量
+
+	p = L->next; //p指向头结点指针域
+
+	while (p) //while (p != NULL) 没到表尾
+	{
+		q = p->next; //q指向下一个节点
+		delete p;
+		p = q;
+	}
+	//已出循环 p q 均为空
+
+	L->next = NULL; //头指针置空
+
+	return OK;
+}
+
+//求单链表L表长 - 补充算法4
+int ListLength(LinkList L)
+{
+	int i = 0;
+	Lnode* p;
+
+	p = L->next; //p指向第一个节点
+	while (p) //p != NULL
+	{
+		i++;
+		p = p->next;
+	}
+
+	return i;
+}
+
+//取单链表L中第i个元素的内容
+Status GetElem(LinkList L, int i, ElemType& e)
+{
+	Lnode* p = L->next; //指针指向首元结点
+	int j = 1;
+
+	while (p && j < i) //p不为空还未到第i个元素
+	{
+		p = p->next;
+		j++; //++j; //i = 1; j = ++i; (i=2 j=2)
+	}
+
+	if (!p || j > i) //i <= 0 or j > length or p == NULL
+	{
+		return ERROR;
+	}
+
+	e = p->data;
+
+	return OK;
+}
+
+//在单链表中查找值为e的数据元素
+//找到返回L中值为e的数据元素地址 失败返回NULL
+Lnode* LocateElemAddress(LinkList L, ElemType e)
+{
+	Lnode* p = L->next; //指针指向首元结点
+
+	while (p && p->data != e) //p != NULL 且 p的数据域不是e
+	{
+		p = p->next;
+	}
+
+	//如果还未找到 p此时就已经是NULL了
+	return p; //返回指针变量p
+}
+
+//在单链表中查找值为e的数据元素的位置序号
+//找到返回L中值为e的数据元素序号 失败返回NULL
+int LocateElemIndex(LinkList L, ElemType e)
+{
+	Lnode* p = L->next; //指针指向首元结点
+	int j = 1;
+
+	while (p && p->data != e)
+	{
+		p = p->next;
+		j++;
+	}
+
+	if (p)
+	{
+		return j;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
 int main(void)
 {
 	LinkList list;
-	int s;
+	int s, len, i;
+	ElemType e;
+	Lnode* ptr;
 
+	//初始化
 	s = InitList(list);
 	cout << "init list = " << s << endl << endl;
-
+	
+	//判断是否为空
 	s = IsEmpty(list);
 	cout << "is empty = " << s << endl << endl;
 
+	//填充并打印
 	FillList(list);
 	PrintList(list);
 
+	//查看长度
+	len = ListLength(list);
+	cout << "len = " << len << endl << endl;
+
+	//获取第n个元素
+	s = GetElem(list, 4, e);
+	cout << "s = " << s << endl;
+	cout << "e = " << e << endl << endl;
+
+	//查找元素
+	ptr = LocateElemAddress(list, -40);
+	cout << "ptr = " << ptr << endl << endl; //返回地址
+	i = LocateElemIndex(list, 60);
+	cout << "i = " << i << endl << endl; //返回index
+
+	//清空并打印
+	s = ClearList(list);
+	cout << "clear list = " << s << endl;
+	PrintList(list);
+	cout << "over" << endl << endl;
+	
+	//销毁
 	s = DestroyList(list);
 	cout << "destroy list = " << s << endl << endl;
 
