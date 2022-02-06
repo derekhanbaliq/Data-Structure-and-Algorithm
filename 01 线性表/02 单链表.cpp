@@ -201,6 +201,59 @@ int LocateElemIndex(LinkList L, ElemType e)
 	}
 }
 
+//在单链表L中第i个元素之前插入数据元素e
+Status ListInsert(LinkList& L, int i, ElemType e)
+{
+	Lnode* p = L;
+	int j = 0;
+	Lnode* s = new Lnode;
+
+	while (p && j < i - 1) //寻找第i-1个结点 p指向i-1结点
+	{
+		p = p->next;
+		j++; //++j
+	}
+
+	if (!p || j > i - 1) //p==NULL(j>表长+1) or j<1
+	{
+		return ERROR;
+	}
+
+	s->data = e;
+	s->next = p->next; //后边的链接
+	p->next = s; //前边的链接 s是地址！
+
+	return OK;
+}
+
+//将线性表L中第i个元素删除
+Status ListDelete(LinkList& L, int i, ElemType& e)
+{
+	Lnode* p = L; //从头结点开始数
+	Lnode* q;
+	int j = 0;
+
+	while (p->next && j < i - 1) //寻找第i个结点 并令p指向其前驱
+	{
+		p = p->next;
+		j++;
+	}
+
+	if (!(p->next) || j > i - 1) //小于0 大于n
+	{
+		return ERROR;
+	}
+
+	q = p->next; //临时保存被删结点的地址以备释放
+	p->next = q->next; //p->next->next
+	e = q->data;
+
+	delete q; //释放删除结点的空间
+
+	return OK;
+}
+
+
 int main(void)
 {
 	LinkList list;
@@ -222,18 +275,28 @@ int main(void)
 
 	//查看长度
 	len = ListLength(list);
-	cout << "len = " << len << endl << endl;
+	cout << "list len = " << len << endl << endl;
 
 	//获取第n个元素
 	s = GetElem(list, 4, e);
-	cout << "s = " << s << endl;
+	cout << "get elem = " << s << endl;
 	cout << "e = " << e << endl << endl;
 
 	//查找元素
 	ptr = LocateElemAddress(list, -40);
-	cout << "ptr = " << ptr << endl << endl; //返回地址
+	cout << "locate elem address ptr = " << ptr << endl << endl; //返回地址
 	i = LocateElemIndex(list, 60);
-	cout << "i = " << i << endl << endl; //返回index
+	cout << "locate elem index i = " << i << endl << endl; //返回index
+
+	//插入
+	s = ListInsert(list, 8, 666);
+	cout << "list insert = " << s << endl;
+	PrintList(list);
+
+	//删除
+	s = ListDelete(list, 8, e);
+	cout << "list insert = " << s << endl;
+	PrintList(list);
 
 	//清空并打印
 	s = ClearList(list);
