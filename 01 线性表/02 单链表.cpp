@@ -226,7 +226,7 @@ Status ListInsert(LinkList& L, int i, ElemType e)
 	return OK;
 }
 
-//将线性表L中第i个元素删除
+//将单链表L中第i个元素删除
 Status ListDelete(LinkList& L, int i, ElemType& e)
 {
 	Lnode* p = L; //从头结点开始数
@@ -253,10 +253,47 @@ Status ListDelete(LinkList& L, int i, ElemType& e)
 	return OK;
 }
 
+//头插法建立单链表L
+void CreateHeadList(LinkList& L, int n)
+{
+	L = new Lnode;
+
+	L->next = NULL; //先建立一个带头结点的单链表
+
+	for (int i = n; i > 0; --i)
+	{
+		Lnode* p = new Lnode; //生成新结点 p=(Lnode*)malloc(sizeof(Lnode));
+		p->data = i; //输入元素值 cin >> p->data; //scanf(&p->data); whatever
+		
+		p->next = L->next; //插入到表头
+		L->next = p;
+	}
+}
+
+//尾插法建立单链表L
+void CreateTailList(LinkList& L, int n)
+{
+	L = new Lnode;
+	Lnode* r; //尾指针 一个标记
+
+	L->next = NULL;
+
+	r = L; //尾指针r指向头结点
+
+	for (int i = 0; i < n; ++i)
+	{
+		Lnode* p = new Lnode;
+		p->data = i + 1; //cin >> p->data;
+
+		p->next = NULL;
+		r->next = p; //插入到表尾
+		r = p; //指向新的尾结点
+	}
+}
 
 int main(void)
 {
-	LinkList list;
+	LinkList list, headList, tailList;
 	int s, len, i;
 	ElemType e;
 	Lnode* ptr;
@@ -307,6 +344,18 @@ int main(void)
 	//销毁
 	s = DestroyList(list);
 	cout << "destroy list = " << s << endl << endl;
+
+	//头插法建立单链表
+	CreateHeadList(headList, 5); 
+	PrintList(headList);
+	s = DestroyList(headList);
+	//cout << "destroy list = " << s << endl << endl;
+
+	//尾插法建立单链表
+	CreateTailList(tailList, 10);
+	PrintList(tailList);
+	s = DestroyList(tailList);
+	//cout << "destroy list = " << s << endl << endl;
 
 	return 0;
 }
