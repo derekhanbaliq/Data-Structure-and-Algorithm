@@ -72,7 +72,7 @@ Status DeleteDualListElem(DuLinkList& L, int i, ElemType& e)
 }
 
 
-int main(void)
+int main04(void)
 {
 	//TBD
 	cout << "TBD..." << endl;

@@ -143,6 +143,10 @@
     <ClCompile Include="02 单链表.cpp" />
     <ClCompile Include="03 循环链表.cpp" />
     <ClCompile Include="04 双向链表.cpp" />
+    <ClCompile Include="05 应用1 - 线性表的合并.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SqList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
