@@ -39,7 +39,7 @@ void sqListUnion(SqList& La, SqList& Lb)
 	}
 }
 
-int main05(void)
+int main0501(void)
 {
 	SqList La, Lb;
 
