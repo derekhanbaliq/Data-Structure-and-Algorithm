@@ -52,6 +52,26 @@ Status InsertDualList(DuLinkList& L, int i, ElemType e)
 	return OK;
 }
 
+//删除带头结点的双向循环链表L的第i个元素 并用e返回
+Status DeleteDualListElem(DuLinkList& L, int i, ElemType& e)
+{
+	DuLnode* p;
+
+	if (!(p = GetElemDual(L, i)))
+	{
+		return ERROR;
+	}
+
+	e = p->data;
+	p->prior->next = p->next;
+	p->next->prior = p->prior;
+
+	delete p;
+
+	return OK;
+}
+
+
 int main(void)
 {
 	//TBD
