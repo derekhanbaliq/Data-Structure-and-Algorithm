@@ -30,10 +30,10 @@
     <ClCompile Include="05 应用1 - 线性表的合并.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="05 应用2 - 有序表的合并 - 用顺序表.cpp">
+    <ClCompile Include="05 应用2 - 有序表的合并1 - 用顺序表.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="05 应用2 - 有序表的合并 - 用链表.cpp">
+    <ClCompile Include="05 应用3 - 有序表的合并2 - 用链表.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
