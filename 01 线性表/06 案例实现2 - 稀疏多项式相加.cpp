@@ -9,6 +9,7 @@ typedef struct Pnode
 	struct Pnode* next; //指针域
 }Pnode, *Polynomial;
 
+//创建稀疏多项式
 void CreatePoly(Polynomial& P, int n)
 {
 	Pnode* p = new Pnode;
@@ -34,7 +35,10 @@ void CreatePoly(Polynomial& P, int n)
 	}
 }
 
-int main(void)
+//稀疏多项式相加
+//看笔记
+
+int main0602(void)
 {
 	cout << "TBD..." << endl;
 

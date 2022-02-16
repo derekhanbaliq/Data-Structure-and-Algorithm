@@ -42,6 +42,9 @@
     <ClCompile Include="06 案例实现2 - 稀疏多项式相加.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="06 案例实现3 - 图书信息管理系统.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SqList.h">
