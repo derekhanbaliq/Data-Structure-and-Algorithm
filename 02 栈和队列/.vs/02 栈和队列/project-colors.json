@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "87c1cd22-98c4-4a6f-83ba-a88fc28950f4": {
+      "ProjectGuid": "87c1cd22-98c4-4a6f-83ba-a88fc28950f4",
+      "DisplayName": "02 栈和队列",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
