@@ -1,2 +1,5 @@
 ﻿  01 顺序栈.cpp
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\02 栈和队列\01 顺序栈.cpp(11,1): warning C4005: “OVERFLOW”: 宏重定义
+D:\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(965): message : 参见“OVERFLOW”的前一个定义
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\02 栈和队列\01 顺序栈.cpp(90,15): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
   02 栈和队列.vcxproj -> E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\02 栈和队列\x64\Debug\02 栈和队列.exe
