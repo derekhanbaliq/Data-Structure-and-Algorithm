@@ -140,6 +140,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="01 顺序栈.cpp" />
+    <ClCompile Include="02 链栈.cpp" />
+    <ClCompile Include="03 栈和递归.cpp" />
+    <ClCompile Include="04 顺序队.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

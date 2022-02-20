@@ -18,5 +18,14 @@
     <ClCompile Include="01 顺序栈.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="02 链栈.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="03 栈和递归.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="04 顺序队.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
