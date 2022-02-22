@@ -24,7 +24,7 @@
     <ClCompile Include="03 栈和递归.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="04 顺序队.cpp">
+    <ClCompile Include="04 循环队列.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

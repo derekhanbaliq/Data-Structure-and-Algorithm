@@ -1,3 +1,8 @@
 ﻿  03 栈和递归.cpp
-E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\02 栈和队列\03 栈和递归.cpp(71,6): warning C4101: “n”: 未引用的局部变量
-  02 栈和队列.vcxproj -> E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\02 栈和队列\x64\Debug\02 栈和队列.exe
+  04 循环队列.cpp
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\02 栈和队列\04 循环队列.cpp(10,1): warning C4005: “OVERFLOW”: 宏重定义
+D:\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(965): message : 参见“OVERFLOW”的前一个定义
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\02 栈和队列\04 循环队列.cpp(11,1): warning C4005: “UNDERFLOW”: 宏重定义
+D:\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math.h(966): message : 参见“UNDERFLOW”的前一个定义
+  正在生成代码...
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\02 栈和队列\04 循环队列.cpp(30): error C4716: “InitQueue”: 必须返回一个值
