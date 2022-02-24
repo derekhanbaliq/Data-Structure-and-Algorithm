@@ -193,7 +193,7 @@ Status ListDelete(SqList& L, int i, ElemType &e)
 }
 
 //change the main name to make sure there is only one main in the project
-int main(void)
+int main01(void)
 {
 	SqList list;
 	int box; //just a test space

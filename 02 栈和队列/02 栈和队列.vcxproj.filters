@@ -27,5 +27,8 @@
     <ClCompile Include="04 循环队列.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="05 链队.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

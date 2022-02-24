@@ -23,32 +23,38 @@ typedef struct Lnode
 //定义链表L：LinkList L;
 //定义节点指针p：Lnode *p = LinkList p 但常用后者表明链表 前者表明节点指针
 
+/*
+ * 1）每个链表结点，可能会发生删除插入操作，所以注定了结点结构体中的指针肯定会不断的发生变化———链表结点的定义一定要用指针来对结点进行间接访问
+ * 2）在传入头结点指针给调用函数时，在函数的操作过程中，会给头结点分配内存空间，对其进行修改。所以我们要用指向头结点指针的指针来作为函数的参数。
+ * ————————————————
+ * 原文链接：https ://blog.csdn.net/ivebeenready/article/details/50551853
+*/
+
 //填充链表L - 自定义算法1
 void FillList(LinkList& L)
 {
-	Lnode* p;
+	Lnode* p; //栈区开辟
+	//Lnode* p = new Lnode; 要是用堆区 就手动开辟手动释放即可 - 后边要delete
 
-	p = L; //保存链表L的头指针
+	p = L; //获取链表L的头指针
 
 	for (int i = 0; i < 10; i++)
 	{
 		if (i == 0)
 		{
-			L->data = 971105; //头结点数据域为info
+			p->data = 971105; //头结点数据域为info
 		}
 		else
 		{
-			L->data = 100 - 10 * i; //whatever
+			p->data = 100 - 10 * i; //whatever
 		}
 		
-		L->next = new Lnode;
+		p->next = new Lnode;
 
-		L = L->next; //移位
+		p = p->next; //移位
 	}
 
-	L->next = NULL; //对于链表L最后一个节点的next 要手动赋值NULL 否则它会乱指!
-	
-	L = p;
+	p->next = NULL; //对于链表L最后一个节点的next 要手动赋值NULL 否则它会乱指!
 }
 
 //打印链表L - 自定义算法2
@@ -206,7 +212,6 @@ Status ListInsert(LinkList& L, int i, ElemType e)
 {
 	Lnode* p = L;
 	int j = 0;
-	Lnode* s = new Lnode;
 
 	while (p && j < i - 1) //寻找第i-1个结点 p指向i-1结点
 	{
@@ -214,11 +219,12 @@ Status ListInsert(LinkList& L, int i, ElemType e)
 		j++; //++j
 	}
 
-	if (!p || j > i - 1) //p==NULL(j>表长+1) or j<1
+	if (!p || j > i - 1) //p==NULL(j>表长+1) or j<1 即结点不存在
 	{
 		return ERROR;
 	}
 
+	Lnode* s = new Lnode; //生成新结点
 	s->data = e;
 	s->next = p->next; //后边的链接
 	p->next = s; //前边的链接 s是地址！
@@ -291,13 +297,15 @@ void CreateTailList(LinkList& L, int n)
 	}
 }
 
-int main02(void)
+int main(void)
 {
 	LinkList list, headList, tailList;
 	int s, len, i;
 	ElemType e;
 	Lnode* ptr;
 	LinkList Ta, Tb, Tc;
+
+	cout << "LinkList test" << endl << endl;
 
 	//初始化
 	s = InitList(list);
@@ -357,6 +365,14 @@ int main02(void)
 	PrintList(tailList);
 	s = DestroyList(tailList);
 	//cout << "destroy list = " << s << endl << endl;
+
+	//创建列表和节点通常用 Lnode * 或 LinkList 否则用Lnode别人指你得取地址& 很麻烦
+	//Lnode* test1;
+	//test1->data = 1;
+	//test1->next = list;
+	//Lnode test2;
+	//test2.data = 1;
+	//test2.next = list;
 
 	return 0;
 }
