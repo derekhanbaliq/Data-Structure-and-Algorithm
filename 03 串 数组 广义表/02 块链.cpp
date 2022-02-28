@@ -27,11 +27,9 @@ typedef struct
 	int curlen;				//串的当前长度
 } LString;					//字符串的块链结构
 
-
-
 int main02(void)
 {
-
+	cout << "TBD..." << endl;
 
 	return 0;
 }
