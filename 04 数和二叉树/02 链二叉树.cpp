@@ -13,6 +13,7 @@ using namespace std;
 #define MAXSIZE			100
 
 typedef int TElemType;
+typedef int Status;
 
 typedef struct BiNode //二叉链表
 {
@@ -26,7 +27,25 @@ typedef struct TriNode //三叉链表
 	struct BiNode* lchild, * parent, * rchild;
 }TriNode, * TryTree;
 
-int main02(void)
+//递归：函数自己调用自己
+//迭代：函数内某段代码实现循环，循环中每一次迭代的结果会作为下一次迭代的初始值
+//二叉树先序遍历算法
+Status PreOrderTraverse(BiTree T)
+{
+	if (T == NULL) //空二叉树
+	{
+		return OK;
+	}
+	else
+	{
+		visit(T); //访问根节点
+		PreOrderTraverse(T->lchild); //递归遍历左子树
+		PreOrderTraverse(T->rchild); //递归遍历右子树
+	}
+}
+
+
+int main(void)
 {
 	BiTree bt;
 

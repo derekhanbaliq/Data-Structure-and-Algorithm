@@ -15,7 +15,7 @@ using namespace std;
 typedef int TElemType;
 typedef TElemType SqBiTree[MAXSIZE];
 
-int main(void)
+int main01(void)
 {
 	SqBiTree bt;
 
