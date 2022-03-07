@@ -1,4 +1,5 @@
 #include <iostream>
+#include "stack.h"
 
 using namespace std;
 
@@ -29,6 +30,13 @@ typedef struct TriNode //三叉链表
 
 //递归：函数自己调用自己
 //迭代：函数内某段代码实现循环，循环中每一次迭代的结果会作为下一次迭代的初始值
+
+//访问T结点
+void visit(BiNode* T)
+{
+	;
+}
+
 //二叉树先序遍历算法
 Status PreOrderTraverse(BiTree T)
 {
@@ -44,6 +52,62 @@ Status PreOrderTraverse(BiTree T)
 	}
 }
 
+//二叉树中序遍历算法
+Status InOrderTraverse(BiTree T)
+{
+	if (T == NULL) //空二叉树
+	{
+		return OK;
+	}
+	else
+	{
+		PreOrderTraverse(T->lchild); //递归遍历左子树
+		visit(T); //访问根节点
+		PreOrderTraverse(T->rchild); //递归遍历右子树
+	}
+}
+
+//二叉树后序遍历算法
+Status PostOrderTraverse(BiTree T)
+{
+	if (T == NULL) //空二叉树
+	{
+		return OK;
+	}
+	else
+	{
+		PreOrderTraverse(T->lchild); //递归遍历左子树
+		PreOrderTraverse(T->rchild); //递归遍历右子树
+		visit(T); //访问根节点
+	}
+}
+
+//二叉树中序遍历算法 - 栈实现
+Status InOrderTraverse_Stack(BiTree T)
+{
+	SElemType p, q;
+	SqStack S;
+
+	p = SElemType(T);
+	InitStack(S);
+	
+	while (p || !IsStackEmpty(S))
+	{
+		if (p)
+		{
+			Push(S, SElemType(p));
+			p = p->lchild;
+		}
+		else
+		{
+			Pop(S, q);
+			cout << "q->data = " << q->data << endl;
+			p = (q->rchild);
+		}
+	}
+
+	return OK;
+}
 
 int main(void)
 {

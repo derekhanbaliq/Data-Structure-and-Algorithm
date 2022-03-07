@@ -13,6 +13,8 @@ using namespace std;
 #define MAXSIZE			100
 
 typedef int TElemType;
+
+//顺序存储结构一般只用于完全二叉树
 typedef TElemType SqBiTree[MAXSIZE];
 
 int main01(void)
