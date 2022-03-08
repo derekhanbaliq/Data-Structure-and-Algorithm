@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClCompile Include="01 顺序二叉树.cpp" />
     <ClCompile Include="02 链二叉树.cpp" />
+    <ClCompile Include="XX 顺序循环队列.cpp" />
     <ClCompile Include="XX 顺序栈.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="queue.h" />
     <ClInclude Include="stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

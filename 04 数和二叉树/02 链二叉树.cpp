@@ -1,5 +1,6 @@
 #include <iostream>
 #include "stack.h"
+#include "queue.h"
 
 using namespace std;
 
@@ -34,10 +35,10 @@ typedef struct TriNode //三叉链表
 //访问T结点
 void visit(BiNode* T)
 {
-	;
+	cout << T->data << endl;
 }
 
-//二叉树先序遍历算法
+//先序遍历算法
 Status PreOrderTraverse(BiTree T)
 {
 	if (T == NULL) //空二叉树
@@ -52,7 +53,7 @@ Status PreOrderTraverse(BiTree T)
 	}
 }
 
-//二叉树中序遍历算法
+//中序遍历算法
 Status InOrderTraverse(BiTree T)
 {
 	if (T == NULL) //空二叉树
@@ -67,7 +68,7 @@ Status InOrderTraverse(BiTree T)
 	}
 }
 
-//二叉树后序遍历算法
+//后序遍历算法
 Status PostOrderTraverse(BiTree T)
 {
 	if (T == NULL) //空二叉树
@@ -82,7 +83,7 @@ Status PostOrderTraverse(BiTree T)
 	}
 }
 
-//二叉树中序遍历算法 - 栈实现
+//中序遍历算法 - 栈实现
 Status InOrderTraverse_Stack(BiTree T)
 {
 	SElemType p, q;
@@ -107,6 +108,30 @@ Status InOrderTraverse_Stack(BiTree T)
 	}
 
 	return OK;
+}
+
+//层次遍历算法 - 用队列实现
+void LevelOrder(BTNode b)
+{
+	BTNode p;
+	SqQueue qu;
+
+	InitQueue(qu); //初始化队列
+	EnQueue(qu, b);	//根节点指针进入队列
+
+	while (QueueLength(qu) != 0) //队列不为空
+	{
+		DeQueue(qu, p); //出队结点p
+		cout << p->data << endl; //访问结点p
+		if (p->lchild != NULL)
+		{
+			EnQueue(qu, p->lchild); //有左孩子时将其进队
+		}
+		if (p->rchild != NULL)
+		{
+			EnQueue(qu, p->rchild); //有右孩子时将其进队
+		}
+	}
 }
 
 int main(void)
