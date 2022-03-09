@@ -21,11 +21,11 @@ typedef struct Lnode
 	struct Lnode* next; //指针域 - 自己定义自己 嵌套定义
 } Lnode, * LinkList;	//两个都是数据类型！ 给Lnode重新起名为Lnode LinkList为指向结构体Lnode的指针类型
 //定义链表L：LinkList L;
-//定义节点指针p：Lnode *p = LinkList p 但常用后者表明链表 前者表明节点指针
+//定义结点指针p：Lnode *p = LinkList p 但常用后者表明链表 前者表明结点指针
 
 /*
  * 1）每个链表结点，可能会发生删除插入操作，所以注定了结点结构体中的指针肯定会不断的发生变化———链表结点的定义一定要用指针来对结点进行间接访问
- * 2）在传入头结点指针给调用函数时，在函数的操作过程中，会给头结点分配内存空间，对其进行修改。所以我们要用指向头结点指针的指针来作为函数的参数。
+ * 2）在传入头结点指针给调用函数时，在函数的操作过程中，会给头结点分配内存空间，对其进行修改。所以我们要用指向头结点指针的指针来作为函数的参数。 - 在我们的函数中，用 引用 作 需要修改的参数
  * ————————————————
  * 原文链接：https ://blog.csdn.net/ivebeenready/article/details/50551853
 */
@@ -54,7 +54,7 @@ void FillList(LinkList& L)
 		p = p->next; //移位
 	}
 
-	p->next = NULL; //对于链表L最后一个节点的next 要手动赋值NULL 否则它会乱指!
+	p->next = NULL; //对于链表L最后一个结点的next 要手动赋值NULL 否则它会乱指!
 }
 
 //打印链表L - 自定义算法2
@@ -98,9 +98,9 @@ Status IsEmpty(LinkList L)
 }
 
 //销毁单链表L - 补充算法2
-Status DestroyList(LinkList L)
+Status DestroyList(LinkList& L)
 {
-	Lnode* p; //定义一个节点类型的指针变量
+	Lnode* p; //定义一个结点类型的指针变量
 	while (L->next) //while(L!=NULL)
 	{
 		p = L;
@@ -114,13 +114,13 @@ Status DestroyList(LinkList L)
 //清空单链表L - 补充算法3
 Status ClearList(LinkList& L)
 {
-	Lnode* p, * q; //构建两个节点类型的指针变量
+	Lnode* p, * q; //构建两个结点类型的指针变量
 
 	p = L->next; //p指向头结点指针域
 
 	while (p) //while (p != NULL) 没到表尾
 	{
-		q = p->next; //q指向下一个节点
+		q = p->next; //q指向下一个结点
 		delete p;
 		p = q;
 	}
@@ -137,7 +137,7 @@ int ListLength(LinkList L)
 	int i = 0;
 	Lnode* p;
 
-	p = L->next; //p指向第一个节点
+	p = L->next; //p指向第一个结点
 	while (p) //p != NULL
 	{
 		i++;
@@ -366,7 +366,7 @@ int main(void)
 	s = DestroyList(tailList);
 	//cout << "destroy list = " << s << endl << endl;
 
-	//创建列表和节点通常用 Lnode * 或 LinkList 否则用Lnode别人指你得取地址& 很麻烦
+	//创建列表和结点通常用 Lnode * 或 LinkList 否则用Lnode别人指你得取地址& 很麻烦
 	//Lnode* test1;
 	//test1->data = 1;
 	//test1->next = list;

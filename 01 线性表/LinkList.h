@@ -36,7 +36,7 @@ Status InitList(LinkList& L);
 Status IsEmpty(LinkList L);
 
 //销毁单链表L - 补充算法2
-Status DestroyList(LinkList L);
+Status DestroyList(LinkList& L);
 
 //清空单链表L - 补充算法3
 Status ClearList(LinkList& L);

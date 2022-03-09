@@ -25,7 +25,7 @@ typedef int ElemType;
 
 typedef struct
 {
-	ElemType *elem;
+	ElemType *elem; //指针 指向一个数组
 	int length;
 } SqList; //动态数组的方式 定义顺序表的数据类型
 
