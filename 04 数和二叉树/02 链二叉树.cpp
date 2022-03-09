@@ -1,33 +1,9 @@
 #include <iostream>
+#include "config.h"
 #include "stack.h"
 #include "queue.h"
 
 using namespace std;
-
-#define TRUE			1
-#define FALSE			0
-
-#define OK				1
-#define ERROR			0
-#define OVERFLOW		-1
-#define UNDERFLOW		-2
-
-#define MAXSIZE			100
-
-typedef int TElemType;
-typedef int Status;
-
-typedef struct BiNode //二叉链表
-{
-	TElemType data;
-	struct BiNode* lchild, * rchild; //左右孩子指针
-}BiNode, *BiTree;
-
-typedef struct TriNode //三叉链表
-{
-	TElemType data;
-	struct BiNode* lchild, * parent, * rchild;
-}TriNode, * TryTree;
 
 //递归：函数自己调用自己
 //迭代：函数内某段代码实现循环，循环中每一次迭代的结果会作为下一次迭代的初始值
@@ -35,7 +11,7 @@ typedef struct TriNode //三叉链表
 //访问T结点
 void visit(BiNode* T)
 {
-	cout << T->data << endl;
+	cout << T->data << " ";
 }
 
 //先序遍历算法
@@ -47,7 +23,7 @@ Status PreOrderTraverse(BiTree T)
 	}
 	else
 	{
-		visit(T); //访问根节点
+		visit(T); //访问根结点
 		PreOrderTraverse(T->lchild); //递归遍历左子树
 		PreOrderTraverse(T->rchild); //递归遍历右子树
 	}
@@ -62,9 +38,9 @@ Status InOrderTraverse(BiTree T)
 	}
 	else
 	{
-		PreOrderTraverse(T->lchild); //递归遍历左子树
-		visit(T); //访问根节点
-		PreOrderTraverse(T->rchild); //递归遍历右子树
+		InOrderTraverse(T->lchild); //递归遍历左子树
+		visit(T); //访问根结点
+		InOrderTraverse(T->rchild); //递归遍历右子树
 	}
 }
 
@@ -77,9 +53,9 @@ Status PostOrderTraverse(BiTree T)
 	}
 	else
 	{
-		PreOrderTraverse(T->lchild); //递归遍历左子树
-		PreOrderTraverse(T->rchild); //递归遍历右子树
-		visit(T); //访问根节点
+		PostOrderTraverse(T->lchild); //递归遍历左子树
+		PostOrderTraverse(T->rchild); //递归遍历右子树
+		visit(T); //访问根结点
 	}
 }
 
@@ -111,7 +87,7 @@ Status InOrderTraverse_Stack(BiTree T)
 }
 
 //层次遍历算法 - 用队列实现
-void LevelOrder(BTNode b)
+void LevelOrder(QElemType b)
 {
 	BTNode p;
 	SqQueue qu;
@@ -134,11 +110,55 @@ void LevelOrder(BTNode b)
 	}
 }
 
+//先序建立二叉树
+Status CreateBiTree(BiTree& T)
+{
+	char ch;
+	
+	cout << "input BiTree Node data: ";
+	cin >> ch;
+
+	if (ch == '#')
+	{
+		T = NULL;
+	}
+
+	else
+	{
+		if (!(T = new BiNode))
+		{
+			exit(OVERFLOW);
+		}
+
+		T->data = ch; //生成根结点
+		CreateBiTree(T->lchild); //构造左子树
+		CreateBiTree(T->rchild); //构造右子树
+	}
+
+	return OK;
+}
+
+
 int main(void)
 {
 	BiTree bt;
 
+	CreateBiTree(bt); //ABC##DE#G##F###
 
+	cout << endl << endl << "PreOrderTraverse" << endl;
+	PreOrderTraverse(bt);
+
+	cout << endl << endl << "InOrderTraverse" << endl;
+	InOrderTraverse(bt);
+
+	cout << endl << endl << "PostOrderTraverse" << endl;
+	PostOrderTraverse(bt);
+
+	cout << endl << endl << "InOrderTraverse_Stack" << endl;
+	InOrderTraverse_Stack(bt);
+
+	cout << endl << endl << "LevelOrder" << endl;
+	LevelOrder(QElemType(bt));
 
 	return 0;
 }

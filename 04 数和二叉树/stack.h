@@ -1,36 +1,8 @@
 #pragma once
 #include <iostream>
+#include "config.h"
 
 using namespace std;
-
-//general define
-#define TRUE			1
-#define FALSE			0
-
-#define OK				1
-#define ERROR			0
-#define OVERFLOW		-1
-#define UNDERFLOW		-2
-
-#define MAXSSIZE		20
-
-typedef int Status;
-
-typedef int TElemType;
-typedef struct BiNode //二叉链表
-{
-	TElemType data;
-	struct BiNode* lchild, * rchild; //左右孩子指针
-}BiNode, * BiTree;
-
-typedef BiNode* SElemType;
-
-typedef struct
-{
-	SElemType* base;	//栈底指针
-	SElemType* top;		//栈顶指针
-	int stacksize;		//栈可用最大容量
-}SqStack;
 
 //顺序栈S的初始化
 Status InitStack(SqStack& S);
