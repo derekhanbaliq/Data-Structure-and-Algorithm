@@ -138,10 +138,83 @@ Status CreateBiTree(BiTree& T)
 	return OK;
 }
 
+//复制二叉树
+int Copy(BiTree T, BiTree& NewT)
+{
+	if (T == NULL)
+	{
+		NewT = NULL;
+		return 0;
+	}
+	else
+	{
+		NewT = new BiNode;
+		NewT->data = T->data;
+		Copy(T->lchild, NewT->lchild);
+		Copy(T->rchild, NewT->rchild);
+	}
+}
+
+//计算二叉树深度
+int Depth(BiTree T)
+{
+	int m, n;
+	
+	if (T == NULL)
+	{
+		return 0; //如果是空树 则返回0
+	}
+	else
+	{
+		m = Depth(T->lchild);
+		n = Depth(T->rchild);
+		
+		if (m > n)
+		{
+			return m + 1;
+		}
+		else
+		{
+			return n + 1;
+		}
+	}
+}
+
+//计算结点总数
+int NodeCount(BiTree T)
+{
+	if (T == NULL)
+	{
+		return 0;
+	}
+	else
+	{
+		return NodeCount(T->lchild) + NodeCount(T->rchild) + 1;
+	}
+}
+
+//计算叶子结点数 - 补充算法
+int LeaveCount(BiTree T)
+{
+	int cnt;
+	
+	if (T == NULL)
+	{
+		return 0; //如果是空树 返回0
+	}
+	else if (T->lchild == NULL && T->rchild == NULL)
+	{
+		return 1; //如果是叶子结点 返回1
+	}
+	else
+	{
+		return LeaveCount(T->lchild) + LeaveCount(T->rchild);
+	}
+}
 
 int main(void)
 {
-	BiTree bt;
+	BiTree bt, bt2;
 
 	CreateBiTree(bt); //ABC##DE#G##F###
 
@@ -159,6 +232,17 @@ int main(void)
 
 	cout << endl << endl << "LevelOrder" << endl;
 	LevelOrder(QElemType(bt));
+
+	cout << endl << endl << "Copy" << endl;
+	Copy(bt, bt2);
+	cout << "PreOrderTraverse" << endl;
+	PreOrderTraverse(bt2);
+
+	cout << endl << endl << "Depth = " << Depth(bt) << endl << endl;
+	
+	cout << "NodeCount = " << NodeCount(bt) << endl << endl;
+
+	cout << "LeaveCount = " << LeaveCount(bt) << endl << endl;
 
 	return 0;
 }

@@ -49,3 +49,11 @@ typedef struct TriNode //三叉链表
 	TElemType data;
 	struct BiNode* lchild, * parent, * rchild;
 }TriNode, * TriTree;
+
+//线索二叉树typedef
+typedef struct BiThrNode
+{
+	int data;
+	int ltag, rtag;
+	struct BiThrNode* lchild, * rchild;
+}BiThrNode, * BiThrTree;
