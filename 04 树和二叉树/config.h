@@ -14,6 +14,8 @@ using namespace std;
 #define MAXSSIZE 10
 #define MAXQSIZE 8
 
+#define MAX_TREE_SIZE	20
+
 typedef int Status;
 
 //二叉树typedef
@@ -57,3 +59,35 @@ typedef struct BiThrNode
 	int ltag, rtag;
 	struct BiThrNode* lchild, * rchild;
 }BiThrNode, * BiThrTree;
+
+//树的存储结构
+
+//双亲表示法
+typedef struct PTNode
+{
+	TElemType data;
+	int parent; //双亲位置域
+}PTNode;
+typedef struct
+{
+	PTNode nodes[MAX_TREE_SIZE];
+	int r, n; //根结点的位置和结点个数
+}PTree;
+
+//孩子链表
+typedef struct CTNode //孩子结点结构
+{
+	int child;
+	struct CTNode* next;
+}*ChildPtr;
+typedef struct //双亲结点结构
+{
+	TElemType data;
+	ChildPtr firstchild; //孩子链表头指针
+}CTBox;
+typedef struct //树结构
+{
+	CTBox nodes[MAX_TREE_SIZE];
+	int n, r; //结点数和根结点的位置
+}CTree;
+
