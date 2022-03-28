@@ -139,10 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="01 无向网.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="graph.h" />
+    <ClCompile Include="01 邻接矩阵.cpp" />
+    <ClCompile Include="02 邻接表.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
