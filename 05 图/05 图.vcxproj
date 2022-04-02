@@ -141,6 +141,10 @@
   <ItemGroup>
     <ClCompile Include="01 邻接矩阵.cpp" />
     <ClCompile Include="02 邻接表.cpp" />
+    <ClCompile Include="XX 顺序循环队列.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

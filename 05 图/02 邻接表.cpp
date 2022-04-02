@@ -1,4 +1,5 @@
 #include <iostream>
+#include "queue.h"
 
 using namespace std;
 
@@ -40,6 +41,8 @@ typedef struct
 	AdjList vertices;
 	int vexnum, arcnum;	//图的当前顶点数和弧数
 }ALGraph;
+
+int visited[MVNum];
 
 //采用邻接表表示法创建无向网
 Status CreateUDG(ALGraph& G)
@@ -90,6 +93,49 @@ int LocateVex(ALGraph G, VerTexType v)
 	}
 
 	return -1;
+}
+
+//BFS - 广度优先遍历 连通图
+void BFS(ALGraph G, int v)
+{
+	SqQueue Q;
+	int u, w;
+
+	cout << v;
+	visited[v] = true; //访问第v个顶点
+
+	InitQueue(Q);
+
+	EnQueue(Q, v); //入队
+
+	while (QueueLength(Q) != 0)
+	{
+		DeQueue(Q, u); //队头元素出队 并置为u
+
+		for (w = FirstAdjVex(G, u); w >= 0; w = NextAdjVex(G, u, w))
+		{
+			if (!visited[w]) //w为尚未访问的邻接顶点
+			{
+				cout << w;
+				visited[w] = true;
+				EnQueue(Q, w); //w进队
+			}
+		}
+	}
+}
+
+int FirstAdjVex(ALGraph G, int u)
+{
+	int v = 0;
+	
+	return v;
+}
+
+int NextAdjVex(ALGraph G, int u, int w)
+{
+	int v = 0;
+
+	return v;
 }
 
 int main(void)
