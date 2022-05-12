@@ -18,5 +18,8 @@
     <ClCompile Include="01 顺序查找.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="02 折半查找.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
