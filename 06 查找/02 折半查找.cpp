@@ -80,7 +80,7 @@ int Search_Bin_Recursion(SSTable ST, KeyType key, int low, int high)
 	}
 }
 
-int main(void)
+int main02(void)
 {
 
 

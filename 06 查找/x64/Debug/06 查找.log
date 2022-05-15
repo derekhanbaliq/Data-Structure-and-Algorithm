@@ -1,0 +1,10 @@
+﻿  01 顺序查找.cpp
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\06 查找\01 顺序查找.cpp(23,3): error C2371: “ElemType”: 重定义；不同的基类型
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\06 查找\01 顺序查找.cpp(15): message : 参见“ElemType”的声明
+  02 折半查找.cpp
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\06 查找\02 折半查找.cpp(22,3): error C2371: “ElemType”: 重定义；不同的基类型
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\06 查找\02 折半查找.cpp(14): message : 参见“ElemType”的声明
+  03 二叉排序树查找.cpp
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\06 查找\03 二叉排序树查找.cpp(23,3): error C2371: “ElemType”: 重定义；不同的基类型
+E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\06 查找\03 二叉排序树查找.cpp(15): message : 参见“ElemType”的声明
+  正在生成代码...
