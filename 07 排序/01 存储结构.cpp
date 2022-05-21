@@ -30,6 +30,24 @@ typedef struct //定义顺序表的结构
 	int length; //顺序表的长度
 }SqList;
 
+void InsertSort(SqList& L)
+{
+	int i, j;
+
+	for (i = 2; i <= L.length; ++i)
+	{
+		if (L.r[i].key < L.r[i - 1].key) //若< 需将L.r[i]插入有序子表
+		{
+			L.r[0] = L.r[i]; //复制为哨兵
+			for (j = i - 1; L.r[0].key < L.r[j].key; --j)
+			{
+				L.r[j + 1] = L.r[j]; //记录后移
+			}
+			L.r[j + 1] = L.r[0]; //插入到正确位置
+		}
+	}
+}
+
 int main(void)
 {
 
