@@ -90,7 +90,6 @@ void ShellSort(SqList& L, int dlta[], int t)
 		ShellInsert(L, dlta[k]); //一趟增量为dlta[k]的插入排序
 	}
 }
-
 //对顺序表L进行一趟增量为dk的Shell排序 dk为步长因子
 void ShellInsert(SqList& L, int dk)
 {
@@ -110,8 +109,117 @@ void ShellInsert(SqList& L, int dk)
 	}
 }
 
+//冒泡排序
+void BubbleSort(SqList& L)
+{
+	int m, n, j;
+	RedType x; //交换时临时存储
+
+	for (m = 1; m <= n - 1; m++)
+	{
+		for (j = 1; j <= n - m; j++)
+		{
+			if (L.r[j].key > L.r[j + 1].key)
+			{
+				x = L.r[j];
+				L.r[j] = L.r[j + 1];
+				L.r[j + 1] = x;
+			}
+		}
+	}
+}
+//改进版冒泡排序
+void BubbleSort(SqList& L)
+{
+	int m, n, j;
+	int flag = 1;
+	RedType x; //交换时临时存储
+
+	for (m = 1; m <= n - 1 && flag == 1; m++)
+	{
+		flag = 0;
+		
+		for (j = 1; j <= n - m; j++)
+		{
+			if (L.r[j].key > L.r[j + 1].key)
+			{
+				flag = 1; //发生交换 flag置1 若本趟没发生交换 flag保持为0
+				
+				x = L.r[j];
+				L.r[j] = L.r[j + 1];
+				L.r[j + 1] = x;
+			}
+		}
+	}
+}
+
+//对顺序表L快速排序
+void QSort(SqList& L, int low, int high)
+{
+	if (low < high) //长度大于1
+	{
+		int pivotloc = Partition(L, low, high); //将L.r[low...high]一分为二，pivotloc为枢轴元素排好序的位置
+		QSort(L, low, pivotloc - 1); //对低子表递归排序
+		QSort(L, pivotloc + 1, high); //对高子表递归排序
+	}
+}
+int Partition(SqList& L, int low, int high)
+{
+	int pivotkey = L.r[low].key;
+	
+	L.r[0] = L.r[low];
+	
+	while (low < high)
+	{
+		while (low < high && L.r[high].key >= pivotkey)
+		{
+			--high;
+		}
+		L.r[low] = L.r[high];
+
+		while (low < high && L.r[low].key <= pivotkey)
+		{
+			++low;
+		}
+		L.r[high] = L.r[low];
+	}
+
+	L.r[low] = L.r[0];
+
+	return low;
+}
+
+//简单选择排序
+void SelectSort(SqList& L)
+{
+	int i, k, j;
+	RedType box;
+	
+	for (i; i < L.length; ++i)
+	{
+		k = i;
+
+		for (j = i + 1; j <= L.length; j++)
+		{
+			if (L.r[j].key < L.r[k].key)
+			{
+				k = j; //记录最小值位置
+			}
+		}
+
+		if (k != i) //交换
+		{
+			box = L.r[k];
+			L.r[k] = L.r[i];
+			L.r[i] = box;
+		}
+	}
+}
+
 int main(void)
 {
+	//SqList L;
+	//QSort(L, 1, L.length);
 
 	return 0;
 }
