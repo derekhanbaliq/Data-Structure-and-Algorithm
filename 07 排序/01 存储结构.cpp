@@ -216,6 +216,30 @@ void SelectSort(SqList& L)
 	}
 }
 
+//堆排序
+void HeapAdjust(KeyType R[], int s, int m)
+//已知R[s...m]中记录的关键字除R[s]之外均满足堆的定义 本函数调整R[s]的关键字 使R[s...m]成为一个大根堆
+{
+	KeyType rc = R[s];
+
+	for (int j = 2 * s; j <= m; j *= 2)
+	{
+		if (j < m && R[j] < R[j + 1]) //沿着key较大的孩子结点向下筛选
+		{
+			++j; //j为key较大的记录的下标
+		}
+		if (rc >= R[j])
+		{
+			break;
+		}
+		R[s] = R[j];
+		s = j; //rc应插入在位置s上
+	}
+
+	R[s] = rc; //插入
+}
+
+
 int main(void)
 {
 	//SqList L;
