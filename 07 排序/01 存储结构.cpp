@@ -238,7 +238,22 @@ void HeapAdjust(KeyType R[], int s, int m)
 
 	R[s] = rc; //插入
 }
+//对R[1]到R[n]进行堆排序
+void HeapSort(KeyType R[])
+{
+	int i;
+	int n = sizeof(R) / sizeof(R[0]);
 
+	for (i = n / 2; i >= 1; i--)
+	{
+		HeapAdjust(R, i, n); //建初始堆
+	}
+	for (i = n; i > 1; i--)
+	{
+		swap(R[1], R[i]); //根与最后一个元素交换
+		HeapAdjust(R, 1, i - 1); //对R[1]到R[i-1]重新建堆
+	}
+}
 
 int main(void)
 {
