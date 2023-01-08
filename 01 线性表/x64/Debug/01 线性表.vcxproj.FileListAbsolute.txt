@@ -1,2 +1,3 @@
 E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓\01 线性表\x64\Debug\01 线性表.exe
 E:\0 Expedition\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\01 线性表\x64\Debug\01 线性表.exe
+E:\Data Structure & Algorithms\2 B站 王卓 - GitHub Repo\Data-Structure-and-Algorithm\01 线性表\x64\Debug\01 线性表.exe

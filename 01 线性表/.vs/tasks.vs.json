@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "任务-01 线性表",
+      "appliesTo": "/",
+      "type": "launch"
+    }
+  ]
+}
