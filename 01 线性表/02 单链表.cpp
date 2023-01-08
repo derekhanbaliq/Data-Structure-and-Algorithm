@@ -236,7 +236,7 @@ Status ListInsert(LinkList& L, int i, ElemType e)
 Status ListDelete(LinkList& L, int i, ElemType& e)
 {
 	Lnode* p = L; //从头结点开始数
-	Lnode* q;
+	Lnode* q = new Lnode;
 	int j = 0;
 
 	while (p->next && j < i - 1) //寻找第i个结点 并令p指向其前驱
@@ -306,6 +306,11 @@ int main(void)
 	LinkList Ta, Tb, Tc;
 
 	cout << "LinkList test" << endl << endl;
+
+	//list = new Lnode;
+	//list->data = 0;
+	//list->next = NULL;
+	//cout << list->data << endl;
 
 	//初始化
 	s = InitList(list);
